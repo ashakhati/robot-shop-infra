@@ -2,8 +2,6 @@
 image: amazonlinux:latest
     
 
-
-
 stages:
   - init
   - plan
