@@ -1,0 +1,44 @@
+image: hashicorp/terraform:latest
+
+stages:
+  - init
+  - plan
+  - apply
+
+variables:
+  AWS_REGION: "us-west-2"  # Change to your AWS region
+ # TF_STATE_BUCKET: "my-terraform-bucket"  # Remote state S3 bucket
+ # TF_STATE_KEY: "eks-cluster/terraform.tfstate"
+
+before_script:
+  - export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
+  - export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
+  - export AWS_DEFAULT_REGION=$AWS_REGION
+  - terraform --version
+
+terraform-init:
+  stage: init
+  script:
+    - terraform init 
+    - terraform validate
+  only:
+    - main  # Runs only on the main branch
+
+terraform-plan:
+  stage: plan
+  script:
+    - terraform plan -out=tfplan
+  dependencies:
+    - terraform-init
+  only:
+    - main
+
+terraform-apply:
+  stage: apply
+  script:
+    - terraform apply -auto-approve tfplan
+  dependencies:
+    - terraform-plan
+  when: manual  # Requires manual approval before applying
+  only:
+    - main
