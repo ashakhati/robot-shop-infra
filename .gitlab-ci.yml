@@ -23,11 +23,12 @@ before_script:
   - sudo ./aws/install
 
   - yum install -y unzip wget
-  - wget https://releases.hashicorp.com/terraform/1.6.0/terraform_1.6.0_linux_amd64.zip
+  - wget https://releases.hashicorp.com/terraform/$(curl -s https://checkpoint-api.hashicorp.com/v1/check/terraform | jq -r .current_version)/terraform_$(curl -s https://checkpoint-api.hashicorp.com/v1/check/terraform | jq -r .current_version)_linux_amd64.zip
+
   - unzip terraform_1.6.0_linux_amd64.zip
   - mv terraform /usr/local/bin/
   - pwd
- # - cd robot-shop-infra/EKS-VPC
+  - cd EKS-VPC
   - ls -la
 
   - terraform --version  # Verify installation
