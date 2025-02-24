@@ -18,10 +18,11 @@ before_script:
   - unzip awscliv2.zip
   - sudo ./aws/install
 
-  - export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
-  - export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
-  - export AWS_DEFAULT_REGION=$AWS_REGION
-  - terraform --version
+  - yum install -y unzip wget
+  - wget https://releases.hashicorp.com/terraform/1.6.0/terraform_1.6.0_linux_amd64.zip
+  - unzip terraform_1.6.0_linux_amd64.zip
+  - mv terraform /usr/local/bin/
+  - terraform --version  # Verify installation
 
 terraform-init:
   stage: init
