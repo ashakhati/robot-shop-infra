@@ -26,10 +26,10 @@ before_script:
   - sudo ./aws/install
 
   - yum install -y unzip wget
-  - wget https://releases.hashicorp.com/terraform/$(curl -s https://checkpoint-api.hashicorp.com/v1/check/terraform | jq -r .current_version)/terraform_$(curl -s https://checkpoint-api.hashicorp.com/v1/check/terraform | jq -r .current_version)_linux_amd64.zip
-
-  - unzip terraform_1.6.0_linux_amd64.zip
-  - mv terraform /usr/local/bin/
+  - sudo yum install -y yum-utils 
+  - curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+  -  sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
+  - sudo yum install terraform -y
   - pwd
   - cd EKS-VPC
   - ls -la
