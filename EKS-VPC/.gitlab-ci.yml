@@ -32,18 +32,14 @@ terraform-init:
   script:
     - terraform init 
     - terraform validate
-  only:
-    - main  # Runs only on the main branch
-
+ 
 terraform-plan:
   stage: plan
   script:
     - terraform plan -out=tfplan
   dependencies:
     - terraform-init
-  only:
-    - main
-
+  
 terraform-apply:
   stage: apply
   script:
@@ -51,5 +47,4 @@ terraform-apply:
   dependencies:
     - terraform-plan
   when: manual  # Requires manual approval before applying
-  only:
-    - main
+  
