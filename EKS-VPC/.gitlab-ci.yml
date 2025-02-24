@@ -1,0 +1,52 @@
+image: amazonlinux:latest
+
+stages:
+  - init
+  - plan
+  - apply
+
+variables:
+  AWS_REGION: "us-west-2"  # Change to your AWS region
+ # TF_STATE_BUCKET: "my-terraform-bucket"  # Remote state S3 bucket
+ # TF_STATE_KEY: "eks-cluster/terraform.tfstate"
+
+before_script:
+  - yum update -y
+  - yum install -y sudo unzip  
+
+  - curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+  - unzip awscliv2.zip
+  - sudo ./aws/install
+
+  - yum install -y unzip wget
+  - wget https://releases.hashicorp.com/terraform/1.6.0/terraform_1.6.0_linux_amd64.zip
+  - unzip terraform_1.6.0_linux_amd64.zip
+  - mv terraform /usr/local/bin/
+  - terraform --version  # Verify installation
+
+terraform-init:
+  stage: init
+  script:
+    - terraform init 
+    - terraform validate
+  only:
+    - main  # Runs only on the main branch
+
+terraform-plan:
+  stage: plan
+  script:
+    - terraform plan -out=tfplan
+  dependencies:
+    - terraform-init
+  only:
+    - main
+
+terraform-apply:
+  stage: apply
+  script:
+    - terraform apply -auto-approve tfplan
+  dependencies:
+    - terraform-plan
+  when: manual  # Requires manual approval before applying
+  only:
+    - main
