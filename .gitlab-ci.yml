@@ -9,7 +9,7 @@ stages:
 
 variables:
   AWS_REGION: "us-west-2"  # Change 
-  TF_DIR: "robot-shop-infra/EKS-VPC"
+  
 
  # TF_STATE_BUCKET: "my-terraform-bucket"  # Remote state S3 bucket
  # TF_STATE_KEY: "eks-cluster/terraform.tfstate"
@@ -27,7 +27,7 @@ before_script:
   - unzip terraform_1.6.0_linux_amd64.zip
   - mv terraform /usr/local/bin/
   - pwd
-  - cd robot-shop-infra/EKS-VPC
+ # - cd robot-shop-infra/EKS-VPC
   - ls -la
 
   - terraform --version  # Verify installation
