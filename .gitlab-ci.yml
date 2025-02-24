@@ -5,6 +5,7 @@ stages:
   - init
   - plan
   - apply
+  - destroy
 
 variables:
   AWS_REGION: "us-west-2"  # Change 
