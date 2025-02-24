@@ -25,7 +25,9 @@ before_script:
   - wget https://releases.hashicorp.com/terraform/1.6.0/terraform_1.6.0_linux_amd64.zip
   - unzip terraform_1.6.0_linux_amd64.zip
   - mv terraform /usr/local/bin/
-  - cd robot-shop-infra/EKS-VPC
+  - pwd
+  - cd robot-shop-infra
+  - ls -la
 
   - terraform --version  # Verify installation
 
@@ -48,5 +50,12 @@ terraform-apply:
     - terraform apply -auto-approve tfplan
   dependencies:
     - terraform-plan
+  when: manual  # Requires manual approval before applying
+terraform-destroy:
+  stage: destroy
+  script:
+    - terraform destroy -auto-approve tfplan
+  dependencies:
+    - terraform-apply
   when: manual  # Requires manual approval before applying
   
