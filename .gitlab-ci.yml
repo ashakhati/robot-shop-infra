@@ -1,5 +1,3 @@
-include:
-  - local: "robot-shop-infra/EKS-VPC/.gitlab-ci.yml"
 
 image: amazonlinux:latest
 
@@ -9,7 +7,9 @@ stages:
   - apply
 
 variables:
-  AWS_REGION: "us-west-2"  # Change to your AWS region
+  AWS_REGION: "us-west-2"  # Change 
+  TF_DIR: "robot-shop-infra/EKS-VPC"
+
  # TF_STATE_BUCKET: "my-terraform-bucket"  # Remote state S3 bucket
  # TF_STATE_KEY: "eks-cluster/terraform.tfstate"
 
@@ -25,6 +25,8 @@ before_script:
   - wget https://releases.hashicorp.com/terraform/1.6.0/terraform_1.6.0_linux_amd64.zip
   - unzip terraform_1.6.0_linux_amd64.zip
   - mv terraform /usr/local/bin/
+  - cd $TF_DIR
+
   - terraform --version  # Verify installation
 
 terraform-init:
