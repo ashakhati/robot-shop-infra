@@ -7,7 +7,7 @@ image:
 
     
 variables:
-  TF_DIR: "."
+  TF_DIR: "EKS-VPC"
   AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
   AWS_SECRET_ACCESS_KEY : ${AWS_SECRET_ACCESS_KEY}
   AWS_DEFAULT_REGION: "us-west-2"
@@ -37,20 +37,19 @@ validate:
 plan:
   stage: plan
   script:
-    - cd $TF_DIR
+   
     - terraform plan -out="planfile"
     - ls -la
   dependencies:
     - validate #execute when validate stage passed
   artifacts:
     paths:
-      - $TF_DIR/planfile
+      - planfile
 
 apply:
   stage: apply
   script:
     - ls -la
-    - cd $TF_DIR
     - terraform apply -input=false "planfile" #false to avoid user interaction
     - aws eks update-kubeconfig --region $AWS_DEFAULT_REGION --name $CLUSTER_NAME --alias $CLUSTER_NAME  # Update kubeconfig to allow kubectl usage
     - export KUBECONFIG=$HOME/.kube/config  # Ensure kubectl uses the right kubeconfig
