@@ -16,6 +16,8 @@ before_script:
   - pip3 install awscli
   - terraform --version       
   - terraform init 
+  - pwd
+  - ls -la
   - aws --version  # Confirm awscli is installed and available
 
 stages:
