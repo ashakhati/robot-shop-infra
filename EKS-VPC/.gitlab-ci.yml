@@ -44,7 +44,7 @@ plan:
     - validate #execute when validate stage passed
   artifacts:
     paths:
-      - planfile
+      - EKS-VPC/planfile
 
 apply:
   stage: apply
