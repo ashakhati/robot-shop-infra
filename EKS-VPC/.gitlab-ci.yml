@@ -7,7 +7,7 @@ image:
 
     
 variables:
-  TF_DIR: "EKS-VPC"
+  TF_DIR: "."
   AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
   AWS_SECRET_ACCESS_KEY : ${AWS_SECRET_ACCESS_KEY}
   AWS_DEFAULT_REGION: "us-west-2"
