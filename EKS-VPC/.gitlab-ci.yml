@@ -17,7 +17,7 @@ before_script:
   - terraform --version       
   - terraform init 
   - aws --version  # Confirm awscli is installed and available
- 
+
 stages:
   - validate
   - plan
