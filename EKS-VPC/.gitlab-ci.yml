@@ -51,7 +51,9 @@ apply:
   script:
     - ls -la
     - terraform apply -input=false "planfile" #false to avoid user interaction
-    - aws eks update-kubeconfig --region $AWS_DEFAULT_REGION --name $CLUSTER_NAME --alias $CLUSTER_NAME  # Update kubeconfig to allow kubectl usage
+    - aws eks update-kubeconfig --region $AWS_DEFAULT_REGION --name $CLUSTER_NAME --alias $CLUSTER_NAME 
+    - echo $AWS_DEFAULT_REGION
+    - echo $CLUSTER_NAME
    # - export KUBECONFIG=$HOME/.kube/config  # Ensure kubectl uses the right kubeconfig
 
   dependencies:
