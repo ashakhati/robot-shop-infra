@@ -5,7 +5,7 @@ image:
     - '/usr/bin/env'
     - 'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
 
-  
+
 variables:
   TF_DIR: "EKS-VPC"
   AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
