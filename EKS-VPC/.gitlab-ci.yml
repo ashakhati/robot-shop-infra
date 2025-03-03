@@ -18,7 +18,7 @@ before_script:
   - terraform --version    
   - cd $TF_DIR   
   - aws configure list
-  - cat ~/.aws/credentials
+  #- cat ~/.aws/credentials
   - aws sts get-caller-identity
   - terraform init 
   - pwd
