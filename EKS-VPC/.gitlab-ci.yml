@@ -18,6 +18,7 @@ before_script:
   - terraform --version    
   - cd $TF_DIR   
   - aws configure list
+  - cat ~/.aws/credentials
   - terraform init 
   - pwd
   - ls -la
