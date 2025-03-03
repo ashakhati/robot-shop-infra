@@ -17,6 +17,7 @@ before_script:
   - pip3 install awscli
   - terraform --version    
   - cd $TF_DIR   
+  - aws configure list
   - terraform init 
   - pwd
   - ls -la
