@@ -21,8 +21,6 @@ before_script:
   - echo $AWS_ACCESS_KEY_ID
   - echo $AWS_SECRET_ACCESS_KEY
   - echo $AWS_REGION
-
-  - aws configure get region
   - echo "AWS_SECRET_ACCESS_KEY is set? ->" ${AWS_SECRET_ACCESS_KEY:+Yes} || echo "No"
   - env | grep AWS
   - aws sts get-caller-identity 
