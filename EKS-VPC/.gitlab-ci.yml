@@ -18,9 +18,9 @@ before_script:
   - cd $TF_DIR   
   - aws configure list
   - date
+  - aws configure get region
   - echo "AWS_SECRET_ACCESS_KEY is set? ->" ${AWS_SECRET_ACCESS_KEY:+Yes} || echo "No"
   - env | grep AWS
-  - aws configure get region
   - aws sts get-caller-identity 
   - terraform init 
   - pwd
