@@ -22,7 +22,6 @@ before_script:
   - aws configure set aws_secret_access_key AWS_SECRET_ACCESS_KEY 
   - aws configure set region AWS_REGION
 
-
   - aws sts get-caller-identity 
   - terraform init 
   - pwd
