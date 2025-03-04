@@ -7,10 +7,10 @@ terraform {
   }
 
   backend "s3" {
-    bucket         = "cieast-terraform-eks-state-s3-bucket"
+    bucket         = "ci-terraform-eks-state-s3-bucket"
     key            = "terraform.tfstate"
     region         = "us-west-2"
-    dynamodb_table = "cieast-terraform-eks-state-locks"
+    dynamodb_table = "ci-terraform-eks-state-locks"
     encrypt        = true
   }
 }
