@@ -68,6 +68,8 @@ resource "aws_eks_node_group" "main" {
 
   
   instance_types = ["t2.medium"]
+  volume_type = "gp2" 
+
 
   capacity_type  = each.value.capacity_type
 
