@@ -65,12 +65,6 @@ resource "aws_eks_node_group" "main" {
   node_group_name = each.key
   node_role_arn   = aws_iam_role.node.arn
   subnet_ids      = var.subnet_ids
-
-  
-  instance_types = ["t2.medium"]
- 
-
-
   capacity_type  = each.value.capacity_type
 
   scaling_config {
@@ -78,13 +72,8 @@ resource "aws_eks_node_group" "main" {
     max_size     = each.value.scaling_config.max_size
     min_size     = each.value.scaling_config.min_size
   } 
-  root_block_device {
-    volume_type = "gp2"  # Set to gp2, you can change this to gp3 or other types
-    volume_size = 20      # Size in GB
-    delete_on_termination = true
-  }
-
-
+ 
+  
   depends_on = [
     aws_iam_role_policy_attachment.node_policy
   ]
