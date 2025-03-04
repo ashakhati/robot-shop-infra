@@ -20,7 +20,8 @@ before_script:
   - echo "AWS_SECRET_ACCESS_KEY is set? ->" ${AWS_SECRET_ACCESS_KEY:+Yes} || echo "No"
   - env | grep AWS
   - aws sts get-caller-identity 
-  - terraform init 
+  - terraform init -reconfigure
+ # - terraform init 
   - pwd
   - ls -la
   - aws --version  # Confirm awscli is installed and available
