@@ -14,12 +14,6 @@ before_script:
   - terraform --version    
   - cd $TF_DIR   
   - aws configure list
-  - date
-  - echo $AWS_ACCESS_KEY_ID
-  - echo $AWS_SECRET_ACCESS_KEY
-  - echo $AWS_REGION
-  - echo "AWS_SECRET_ACCESS_KEY is set? ->" ${AWS_SECRET_ACCESS_KEY:+Yes} || echo "No"
-  - env | grep AWS
   - aws sts get-caller-identity 
   #- terraform init -reconfigure
   - terraform init 
