@@ -21,6 +21,7 @@ before_script:
   - ls -la
   - aws --version  # Confirm awscli is installed and available
 
+
 stages:
   - validate
   - plan
