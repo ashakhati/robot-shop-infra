@@ -5,8 +5,7 @@ image:
     - '/usr/bin/env'
     - 'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
 variables:
-  TF_DIR: "EKS-VPC"
- 
+  TF_DIR: "EKS-VPC" 
   
 before_script:
   - apk add --no-cache python3 py3-pip bash
