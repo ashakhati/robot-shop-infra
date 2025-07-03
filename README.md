@@ -1,9 +1,4 @@
-# robot-shop-infra
 
-Project Title & Badge
-markdown
-Copy
-Edit
 # 🚀 Robot Shop Infra (AWS EKS via Terraform)
 
 This repo provisions a production-ready AWS EKS cluster for the Robot Shop microservices app, showcasing best practices in IaC, security, and observability.
